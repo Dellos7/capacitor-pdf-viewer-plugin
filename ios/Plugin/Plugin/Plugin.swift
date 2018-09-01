@@ -11,26 +11,22 @@ import PDFKit
 public class PdfViewer: CAPPlugin {
     
     @objc func show(_ call: CAPPluginCall) {
-        //let value = call.getString("value") ?? ""
-
         if #available(iOS 11.0, *) {
-            //let pdfViewController = ViewController()
-            //self.bridge.viewController.view = pdfViewController
-            //self.showPdf();
-            
-            /*let pdfViewController = PdfViewController()
-            self.bridge.viewController.present( pdfViewController, animated: true, completion: nil )*/
+            print("call options")
+            print(call.options)
+            guard let pdfUrl = call.options["url"] as? String else {
+                print("here, missing parameter url")
+                call.error( "Missing parameter: url" )
+                return
+            }
             let storyboard = UIStoryboard(name: "PdfViewer", bundle: Bundle(for: type(of: self)))
-            let controller = storyboard.instantiateViewController(withIdentifier: "PdfViewController")
+            let controller: PdfViewController = (storyboard.instantiateViewController(withIdentifier: "PdfViewController") as? PdfViewController)!
+            controller.setPdfUrl(url: pdfUrl)
             self.bridge.viewController.present(controller, animated: true, completion: nil)
-            
+            call.success()
         } else {
-            // Fallback on earlier versions
-            print("Only available on iOS 11")
+            call.error( "Plugin only available on iOS >= 11.0" )
         }
-        call.success([
-            "result": "ok"
-            ])
     }
     
     @available(iOS 11.0, *)

@@ -9,9 +9,9 @@ export class PdfViewerWeb extends WebPlugin implements PdfViewerPlugin {
     });
   }
 
-  async show(): Promise<{result: string}> {
-    console.log('SHOW');
-    return Promise.resolve({ result: 'missing web implementation' });
+  async show( options: { url: string } ): Promise<{result: string}> {
+    console.log('show, with options: ' + options);
+    return Promise.reject('missing web implementation');
   }
 }
 
