@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PdfViewerView" customModule="PdfViewer">
+            <connections>
+                <outlet property="closeButton" destination="Fwn-e0-dxw" id="sYY-pT-UU9"/>
+                <outlet property="contentView" destination="V4V-gK-Rcd" id="Khk-h5-jqj"/>
+                <outlet property="page1ImageView" destination="fOO-Fk-sw5" id="Lsg-cz-CnY"/>
+                <outlet property="page2ImageView" destination="lFj-sj-KxU" id="b9y-ra-hge"/>
+                <outlet property="pdfView" destination="cuK-h9-fEr" id="Nfd-ob-l6f"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="V4V-gK-Rcd" userLabel="View">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cuK-h9-fEr" customClass="PDFView">
+                    <rect key="frame" x="0.0" y="71" width="375" height="371"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </view>
+                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="bBL-pX-2Go">
+                    <rect key="frame" x="16" y="463" width="343" height="184"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fOO-Fk-sw5">
+                            <rect key="frame" x="0.0" y="0.0" width="166.5" height="184"/>
+                            <color key="backgroundColor" red="0.66422420739999999" green="0.66424006219999998" blue="0.66423153879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </imageView>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lFj-sj-KxU">
+                            <rect key="frame" x="176.5" y="0.0" width="166.5" height="184"/>
+                            <color key="backgroundColor" red="0.66422420739999999" green="0.66424006219999998" blue="0.66423153879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </imageView>
+                    </subviews>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="184" id="GQG-zB-MbX"/>
+                    </constraints>
+                </stackView>
+                <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ofC-6Z-mPT">
+                    <rect key="frame" x="0.0" y="27" width="375" height="44"/>
+                    <items>
+                        <navigationItem title="PDF Viewer" id="cyc-G3-eg6">
+                            <barButtonItem key="rightBarButtonItem" title="Close" id="Fwn-e0-dxw">
+                                <connections>
+                                    <action selector="closePdf:" destination="-1" id="KVR-gT-dGr"/>
+                                </connections>
+                            </barButtonItem>
+                        </navigationItem>
+                    </items>
+                </navigationBar>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="trailingMargin" secondItem="bBL-pX-2Go" secondAttribute="trailing" id="JhR-si-JdR"/>
+                <constraint firstAttribute="trailingMargin" secondItem="cuK-h9-fEr" secondAttribute="trailing" constant="-16" id="UM8-vX-JqQ"/>
+                <constraint firstAttribute="leadingMargin" secondItem="bBL-pX-2Go" secondAttribute="leading" id="XKC-WG-3g6"/>
+                <constraint firstItem="ofC-6Z-mPT" firstAttribute="trailing" secondItem="6yG-sH-hFO" secondAttribute="trailing" id="chN-hm-kLZ"/>
+                <constraint firstItem="ofC-6Z-mPT" firstAttribute="top" secondItem="6yG-sH-hFO" secondAttribute="top" constant="7" id="gLe-t5-GyK"/>
+                <constraint firstItem="cuK-h9-fEr" firstAttribute="top" secondItem="V4V-gK-Rcd" secondAttribute="topMargin" constant="51" id="h0L-cE-F5G"/>
+                <constraint firstAttribute="bottomMargin" secondItem="bBL-pX-2Go" secondAttribute="bottom" constant="20" id="kXK-yu-fvi"/>
+                <constraint firstItem="cuK-h9-fEr" firstAttribute="leading" secondItem="V4V-gK-Rcd" secondAttribute="leadingMargin" constant="-16" id="rUf-a4-Xoo"/>
+                <constraint firstItem="cuK-h9-fEr" firstAttribute="top" secondItem="ofC-6Z-mPT" secondAttribute="bottom" id="szG-dr-0AT"/>
+                <constraint firstItem="bBL-pX-2Go" firstAttribute="top" secondItem="cuK-h9-fEr" secondAttribute="bottom" constant="21" id="wB8-1Z-NC2"/>
+                <constraint firstItem="ofC-6Z-mPT" firstAttribute="leading" secondItem="6yG-sH-hFO" secondAttribute="leading" id="z1X-k3-GeN"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="6yG-sH-hFO"/>
+            <point key="canvasLocation" x="31.5" y="103.5"/>
+        </view>
+    </objects>
+</document>

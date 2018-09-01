@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Pdf View Controller-->
+        <scene sceneID="dki-Ib-XNm">
+            <objects>
+                <viewController storyboardIdentifier="PdfViewController" id="6bT-P0-QBc" customClass="PdfViewController" customModule="PdfViewer" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="uoY-kF-L9N" userLabel="View">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="abf-XK-aYl" customClass="PDFView">
+                                <rect key="frame" x="0.0" y="71" width="375" height="371"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="bGh-bi-SE6">
+                                <rect key="frame" x="16" y="463" width="343" height="184"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DJH-zc-Mtm">
+                                        <rect key="frame" x="0.0" y="0.0" width="166.5" height="184"/>
+                                        <color key="backgroundColor" red="0.66422420739999999" green="0.66424006219999998" blue="0.66423153879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="VaT-Dr-gUi">
+                                        <rect key="frame" x="176.5" y="0.0" width="166.5" height="184"/>
+                                        <color key="backgroundColor" red="0.66422420739999999" green="0.66424006219999998" blue="0.66423153879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </imageView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="184" id="9xV-dL-1M6"/>
+                                </constraints>
+                            </stackView>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n9g-BC-eCf">
+                                <rect key="frame" x="0.0" y="27" width="375" height="44"/>
+                                <items>
+                                    <navigationItem title="PDF Viewer" id="E2x-MJ-Ogr">
+                                        <barButtonItem key="rightBarButtonItem" title="Close" id="AS0-WA-AQf">
+                                            <connections>
+                                                <action selector="closePdf:" destination="6bT-P0-QBc" id="CYo-IG-JV9"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="bottomMargin" secondItem="bGh-bi-SE6" secondAttribute="bottom" constant="20" id="0eG-HV-z0N"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="bGh-bi-SE6" secondAttribute="leading" id="Ckg-kd-Ihb"/>
+                            <constraint firstItem="n9g-BC-eCf" firstAttribute="leading" secondItem="oCB-YC-bbI" secondAttribute="leading" id="Mvu-2d-0TJ"/>
+                            <constraint firstItem="n9g-BC-eCf" firstAttribute="trailing" secondItem="oCB-YC-bbI" secondAttribute="trailing" id="Wf1-y6-aPW"/>
+                            <constraint firstItem="n9g-BC-eCf" firstAttribute="top" secondItem="oCB-YC-bbI" secondAttribute="top" constant="7" id="bcG-Mj-jpL"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="abf-XK-aYl" secondAttribute="trailing" constant="-16" id="hcq-n7-gtB"/>
+                            <constraint firstItem="abf-XK-aYl" firstAttribute="leading" secondItem="uoY-kF-L9N" secondAttribute="leadingMargin" constant="-16" id="i0e-ng-pTl"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="bGh-bi-SE6" secondAttribute="trailing" id="kk7-CO-8cX"/>
+                            <constraint firstItem="abf-XK-aYl" firstAttribute="top" secondItem="n9g-BC-eCf" secondAttribute="bottom" id="nxa-nR-cEc"/>
+                            <constraint firstItem="bGh-bi-SE6" firstAttribute="top" secondItem="abf-XK-aYl" secondAttribute="bottom" constant="21" id="oQl-FR-b2E"/>
+                            <constraint firstItem="abf-XK-aYl" firstAttribute="top" secondItem="uoY-kF-L9N" secondAttribute="topMargin" constant="51" id="sjO-i2-wDX"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="oCB-YC-bbI"/>
+                    </view>
+                    <connections>
+                        <outlet property="closeButton" destination="AS0-WA-AQf" id="tQ8-ff-Mwo"/>
+                        <outlet property="contentView" destination="uoY-kF-L9N" id="cgw-eo-4Kd"/>
+                        <outlet property="page1ImageView" destination="DJH-zc-Mtm" id="doK-xC-ZfZ"/>
+                        <outlet property="page2ImageView" destination="VaT-Dr-gUi" id="yYe-a8-jaR"/>
+                        <outlet property="pdfView" destination="abf-XK-aYl" id="hf9-9u-9h0"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="beS-XL-TZb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="444" y="-215"/>
+        </scene>
+    </scenes>
+</document>
