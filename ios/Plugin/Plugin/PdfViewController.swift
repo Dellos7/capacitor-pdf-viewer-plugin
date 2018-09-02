@@ -36,7 +36,8 @@ class PdfViewController: UIViewController {
         
         if self.thumbsStackView.isHidden {
             alert.addAction(UIAlertAction(title: "Show pages", style: .default , handler:{ (UIAlertAction)in
-                self.captureThumbnails()
+                //self.captureThumbnails()
+                self.showThumbnails()
             }))
         }
         else {
@@ -72,21 +73,34 @@ class PdfViewController: UIViewController {
             self.contentView.frame = self.bounds
             self.addSubview(self.contentView)*/
             
-            self.pdfDocument = PDFDocument(url: url)
-            if  self.pdfDocument != nil {
-                self.pdfView.autoScales = true
-                self.pdfView.displayMode = .singlePageContinuous
-                self.pdfView.displayDirection = .vertical
-                self.pdfView.document = pdfDocument
-                //captureThumbnails()
+            //self.pdfDocument = PDFDocument(url: url)
+            do {
+                let data = try Data(contentsOf: url)
+                self.pdfDocument = PDFDocument( data: data )
+                if  self.pdfDocument != nil {
+                    self.pdfView.autoScales = true
+                    self.pdfView.displayMode = .singlePageContinuous
+                    self.pdfView.displayDirection = .vertical
+                    self.pdfView.document = pdfDocument
+                    //captureThumbnails()
+                }
             }
-            else {
+            catch let err {
                 print("pdf document was not created")
+                print(err.localizedDescription)
             }
         }
         else {
             print("pdf url was not provided")
         }
+    }
+    
+    func showThumbnails() {
+        let storyboard = UIStoryboard(name: "PdfViewer", bundle: Bundle(for: type(of: self)))
+        //let controller: PagesViewController = (storyboard.instantiateViewController(withIdentifier: "PagesViewController") as? PagesViewController)!
+        let controller: PagesViewController = (storyboard.instantiateViewController(withIdentifier: "PagesViewController") as? PagesViewController)!
+        controller.setPdfDocument(pdfDocument: self.pdfDocument!)
+        self.present(controller, animated: true, completion: nil)
     }
     
     func captureThumbnails() {
