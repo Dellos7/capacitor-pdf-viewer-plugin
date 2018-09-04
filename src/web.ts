@@ -13,6 +13,11 @@ export class PdfViewerWeb extends WebPlugin implements PdfViewerPlugin {
     console.log('show, with options: ' + options);
     return Promise.reject('missing web implementation');
   }
+
+  async pickAndShow(): Promise<{result: string}> {
+    console.log('pickAndShow');
+    return Promise.reject('missing web implementation');
+  }
 }
 
 const PdfViewer = new PdfViewerWeb();

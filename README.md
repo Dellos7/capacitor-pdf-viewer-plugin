@@ -5,7 +5,7 @@ A [Capacitor](https://capacitor.ionicframework.com/) plugin in order to be able 
 ## Supported platforms
 
 These are the supported platforms for the plugin at the moment:
-* **iOS** (>=11.0)
+* iOS 11.0+
 
 ## Requirements
 
@@ -21,9 +21,8 @@ npx cap update ios
 ### Ionic/Angular
 ```typescript
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
-import { PdfViewer } from 'pdf-viewer'; // <--
-import { Plugins } from '@capacitor/core'; // <--
+import { PdfViewer } from 'capacitor-pdf-viewer-plugin';
+import { Plugins } from '@capacitor/core';
 
 @Component({
   selector: 'page-home',
@@ -31,18 +30,27 @@ import { Plugins } from '@capacitor/core'; // <--
 })
 export class HomePage {
 
-  constructor(public navCtrl: NavController) {
+  constructor() {}
 
-  }
-
-  showPdf() {
+  showFromUrl() {
+    const url = "https://www.adobe.com/content/dam/acom/en/devnet/acrobat/pdfs/pdf_open_parameters.pdf";
     const { PdfViewer } = Plugins;
-    PdfViewer.show()
+    PdfViewer.show( { url: this.url } )
     .then( res => {
-      console.log('pdf viewer plugin res');
       console.log(res);
     })
     .catch( err => {
+      console.error(err);
+    });
+  }
+
+  pickAndShow() {
+    const { PdfViewer } = Plugins;
+    PdfViewer.pickAndShow()
+    .then(res => {
+      console.log(res);
+    })
+    .catch(err => {
       console.error(err);
     });
   }

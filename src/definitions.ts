@@ -6,4 +6,5 @@ declare global {
 
 export interface PdfViewerPlugin {
   show( options: { url: string } ): Promise<{result: string}>;
+  pickAndShow(): Promise<{result: string}>
 }

@@ -61,18 +61,11 @@ class PdfViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //self.loadPdfView()
         self.loadPdfViewStoryBoard()
-        //self.thumbsStackView.isHidden = true
     }
     
     func loadPdfViewStoryBoard() {
-        //if let url = URL(string: "http://www.axmag.com/download/pdfurl-guide.pdf") {
         if let url = URL(string: self.pdfUrl!) {
-            /*self.contentView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-            self.contentView.frame = self.bounds
-            self.addSubview(self.contentView)*/
-            
             //self.pdfDocument = PDFDocument(url: url)
             do {
                 let data = try Data(contentsOf: url)
